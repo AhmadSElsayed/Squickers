@@ -1,18 +1,16 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CoinCollection : MonoBehaviour
 {
-    private int Coin = 0;
-    private int Key = 0;
     private PlayerState playerState;
+    public Text ScoreUI;
 
     private void Start()
     {
         Debug.Log("started");
         playerState = GetComponent<PlayerState>();
+        ScoreUI.text = "Coins: " + playerState.coinCount;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,23 +19,9 @@ public class CoinCollection : MonoBehaviour
         if (other.transform.CompareTag("Coin"))
         {
             playerState.coinCount++;
+            ScoreUI.text = "Coins: " + playerState.coinCount;
             Destroy(other.gameObject);
         }
         
-        if (other.transform.CompareTag("Key"))
-        {
-            Key++;
-            Destroy(other.gameObject);
-        }
-
-        if (other.transform.CompareTag("Obstacle"))
-        {
-            if (Key == 0)
-            {
-                return;
-            }
-            Key--; 
-            Destroy(other.gameObject);
-        }
     }
 }
