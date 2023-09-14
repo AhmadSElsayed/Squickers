@@ -7,10 +7,12 @@ public class CoinCollection : MonoBehaviour
 {
     private int Coin = 0;
     private int Key = 0;
+    private PlayerState playerState;
 
     private void Start()
     {
         Debug.Log("started");
+        playerState = GetComponent<PlayerState>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -18,7 +20,7 @@ public class CoinCollection : MonoBehaviour
         Debug.Log("Collided with: " + other.tag);
         if (other.transform.CompareTag("Coin"))
         {
-            Coin++;
+            playerState.coinCount++;
             Destroy(other.gameObject);
         }
         

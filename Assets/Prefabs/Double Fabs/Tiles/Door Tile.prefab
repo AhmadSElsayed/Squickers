@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: -9215164695400637249}
   m_Layer: 0
   m_Name: Door Tile
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,7 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2de3f4831aaf0a64c9daed38d85ee928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
+  openByCoins: 0
+  coinsAmount: 0
   animationSpeed: 50
   maxDegree: 90
   invertDirection: 0
