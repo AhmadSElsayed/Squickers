@@ -101,6 +101,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door Tile
       objectReference: {fileID: 0}
+    - target: {fileID: 8078997156482311968, guid: d63b82d5bdc047641aa2e661b567b14d, type: 3}
+      propertyPath: m_Center.x
+      value: 1.062755
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

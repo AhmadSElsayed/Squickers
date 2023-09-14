@@ -50,11 +50,22 @@ public class Draggable : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                isDragging = !isDragging;
-                
-                rb.angularVelocity = new Vector3(0f,isDragging ? 2.0f : 0.0f,0f);
-                rb.velocity = new Vector3(0f,0f,0f); 
-                transform.rotation = Quaternion.Euler(new Vector3(0f,0f,0f));
+                if (isDragging)
+                {
+                    isDragging = false;
+                    player.GetComponent<PlayerState>().inventoryItem = null;
+                    rb.angularVelocity = new Vector3(0f,0.0f,0f);
+                    rb.velocity = new Vector3(0f,0f,0f); 
+                    transform.rotation = Quaternion.Euler(new Vector3(0f,0f,0f));
+                }
+                else if (player.GetComponent<PlayerState>().inventoryItem == null)
+                {
+                    isDragging = true;
+                    player.GetComponent<PlayerState>().inventoryItem = gameObject;
+                    rb.angularVelocity = new Vector3(0f,2.0f,0f);
+                    rb.velocity = new Vector3(0f,0f,0f); 
+                    transform.rotation = Quaternion.Euler(new Vector3(0f,0f,0f));
+                }
             }
         }
     }

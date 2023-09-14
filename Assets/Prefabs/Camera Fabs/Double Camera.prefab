@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6496976615771831916}
   - component: {fileID: 1351731269411124909}
-  - component: {fileID: 1484847428996418111}
-  - component: {fileID: 2178230072564695297}
   - component: {fileID: 2304271095727976872}
   m_Layer: 0
   m_Name: Dark Camera
@@ -86,27 +84,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1484847428996418111
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1258841913587240116}
-  m_Enabled: 0
---- !u!114 &2178230072564695297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1258841913587240116}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a420cd1918e9a4642b1f1a8789da5c30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: 5d09f66b6e4b3594a960dbffe23d60bb, type: 2}
 --- !u!45 &2304271095727976872
 Skybox:
   m_ObjectHideFlags: 0
@@ -126,7 +103,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6649076971659817942}
   - component: {fileID: 3907591571402346748}
-  - component: {fileID: 6500205336039197443}
   - component: {fileID: 2846690908088825584}
   m_Layer: 0
   m_Name: Light Camera
@@ -201,14 +177,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &6500205336039197443
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1505554636459889827}
-  m_Enabled: 0
 --- !u!114 &2846690908088825584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6300972327847120317}
   - component: {fileID: 9192865701625660019}
+  - component: {fileID: 869295132835306157}
   m_Layer: 0
   m_Name: Double Camera
   m_TagString: Untagged
@@ -270,3 +239,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: -0.15, y: 5.5, z: -5.5}
   followObject: {fileID: 0}
+--- !u!81 &869295132835306157
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4979924827375635257}
+  m_Enabled: 1

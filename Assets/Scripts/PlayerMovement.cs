@@ -5,7 +5,8 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 10.0f; //Controls velocity multiplier
     public float jumpStrength = 5.0f; //Controls velocity multiplier
     public float floatStrength = 2.0f;
-    
+    public Camera cam;
+
     Rigidbody rb; //Tells script there is a rigidbody, we can use variable rb to reference it in further script
     private Vector3 speedV = new Vector3();
     private bool isWalking = false;
@@ -15,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cam = Camera.main;
         rb = GetComponent<Rigidbody>(); //rb equals the rigidbody on the player
     }
 
@@ -28,10 +30,10 @@ public class PlayerMovement : MonoBehaviour
 
         var speedVector = new Vector3(xMove, rb.velocity.y, zMove); // Creates velocity in direction of value equal to keypress (WASD). rb.velocity.y deals with falling + jumping by setting velocity to y. 
         
-        if (Physics.Raycast(transform.position, Vector3.down, out var hit))
+        if (Physics.Raycast(transform.position, Vector3.down, out var groundHit))
         {                
-            hitDistance = hit.distance;
-            if (hit.distance > 1.5f) 
+            hitDistance = groundHit.distance;
+            if (groundHit.distance > 1.5f) 
             {
                 // You are falling or at least x units above something.
                 onGround = false;
@@ -40,6 +42,10 @@ public class PlayerMovement : MonoBehaviour
                 // You are not x units above something.
                 onGround = true;
             }
+        }
+        else
+        {
+            onGround = false;
         }
 
         if (onGround && Input.GetButtonDown("Jump"))
