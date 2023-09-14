@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Draggable : MonoBehaviour
@@ -57,6 +58,7 @@ public class Draggable : MonoBehaviour
                     rb.angularVelocity = new Vector3(0f,0.0f,0f);
                     rb.velocity = new Vector3(0f,0f,0f); 
                     transform.rotation = Quaternion.Euler(new Vector3(0f,0f,0f));
+                    GetComponents<Collider>().Where(c => !c.isTrigger).ToList().ForEach(c => c.enabled = true);
                 }
                 else if (player.GetComponent<PlayerState>().inventoryItem == null)
                 {
@@ -65,6 +67,7 @@ public class Draggable : MonoBehaviour
                     rb.angularVelocity = new Vector3(0f,2.0f,0f);
                     rb.velocity = new Vector3(0f,0f,0f); 
                     transform.rotation = Quaternion.Euler(new Vector3(0f,0f,0f));
+                    GetComponents<Collider>().Where(c => !c.isTrigger).ToList().ForEach(c => c.enabled = false);
                 }
             }
         }

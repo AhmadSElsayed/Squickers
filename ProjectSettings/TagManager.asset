@@ -9,6 +9,7 @@ TagManager:
   - Obstacle
   - ScoreUI
   - Door
+  - End
   layers:
   - Default
   - TransparentFX
