@@ -33,6 +33,7 @@ public class End : MonoBehaviour
             {
                 lightVictory.text = "Success Gained!";
                 darkVictory.text = "Trust Broken!";
+                StartCoroutine(WaitForSceneLoad("Credits"));
             }
         }
     }
