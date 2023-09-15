@@ -18,8 +18,26 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0)
+        if (Physics.Raycast(transform.position, Vector3.down, out var groundHit))
+        {
+            if (groundHit.distance > 1.2f) 
+            {
+                // You are falling or at least x units above something.
+                groundedPlayer = false;
+            } else 
+            {
+                // You are not x units above something.
+                groundedPlayer = true;
+            }
+        }
+        else
+        {
+            groundedPlayer = false;
+        }
+        
+        //groundedPlayer = controller.isGrounded;
+        
+        if (controller.isGrounded && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
         }
