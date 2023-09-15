@@ -945,6 +945,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1764265260534252618, guid: f28f702f5e085d745b72517e3ac27e4b, type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480096118165692593, guid: f28f702f5e085d745b72517e3ac27e4b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5464260355717230660, guid: f28f702f5e085d745b72517e3ac27e4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.479432
@@ -989,10 +997,19 @@ PrefabInstance:
       propertyPath: ScoreUI
       value: 
       objectReference: {fileID: 145600068}
-    m_RemovedComponents: []
+    - target: {fileID: 8468761774421327044, guid: f28f702f5e085d745b72517e3ac27e4b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 976895334071902201, guid: f28f702f5e085d745b72517e3ac27e4b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1394940239}
   m_SourcePrefab: {fileID: 100100000, guid: f28f702f5e085d745b72517e3ac27e4b, type: 3}
 --- !u!1001 &676624740
 PrefabInstance:
@@ -3034,6 +3051,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5464260355717230660, guid: f28f702f5e085d745b72517e3ac27e4b, type: 3}
   m_PrefabInstance: {fileID: 665766399}
   m_PrefabAsset: {fileID: 0}
+--- !u!143 &1394940239
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394940232}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.0001
+  m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &1403534793
 PrefabInstance:
   m_ObjectHideFlags: 0
