@@ -8,19 +8,31 @@ public class End : MonoBehaviour
     public Text lightVictory;
     public Text darkVictory;
 
+    private void Start()
+    {
+        StartCoroutine(LevelStartMessage(SceneManager.GetActiveScene().name));
+    }
+    
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("Player"))
         {
-            lightVictory.text = "YOU WIN!";
-            darkVictory.text = "YOU SURVIVED!";
-            if (SceneManager.GetActiveScene().name == "ScratchScene")
+            if (SceneManager.GetActiveScene().name == "Level 1")
             {
-                StartCoroutine(WaitForSceneLoad("Level 1"));
-            } else if (SceneManager.GetActiveScene().name == "Level 1")
+                lightVictory.text = "YOU WIN!";
+                darkVictory.text = "YOU SURVIVED!";
+                StartCoroutine(WaitForSceneLoad("Level 2"));
+            } else if (SceneManager.GetActiveScene().name == "Level 2")
             {
-                StartCoroutine(WaitForSceneLoad("Level 1"));
+                lightVictory.text = "YOU WIN!";
+                darkVictory.text = "YOU SURVIVED!";
+                StartCoroutine(WaitForSceneLoad("Level 3"));
+            } 
+            else if (SceneManager.GetActiveScene().name == "Level 3")
+            {
+                lightVictory.text = "YOU WIN!";
+                darkVictory.text = "YOU SURVIVED!";
             }
         }
     }
@@ -28,6 +40,14 @@ public class End : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene(sceneName);
+    }
     
+    private IEnumerator LevelStartMessage(string sceneName)
+    {
+        lightVictory.text = sceneName;
+        darkVictory.text = sceneName;
+        yield return new WaitForSeconds(2);
+        lightVictory.text = "";
+        darkVictory.text = "";
     }
 }
