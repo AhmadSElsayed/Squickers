@@ -4,7 +4,6 @@
     {
         // TODO: Make a Universe prefab
         // TODO: Make a Scene entity (maybe prefab)
-        // TODO: Fix lever animation
         // TODO: Fix Player movement
         // TODO: Better Camera?
         // TODO: Better assets in general

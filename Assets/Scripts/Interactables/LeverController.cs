@@ -12,7 +12,7 @@ public class LeverController : MonoBehaviour
 
     public void Start()
     {
-        animator = gameObject.GetComponent<Animator>();
+        animator = gameObject.transform.GetChild(0).GetComponent<Animator>();
     }
     
     public void OnTriggerEnter(Collider other)
@@ -42,7 +42,7 @@ public class LeverController : MonoBehaviour
                 
                 if (animator != null)
                 {
-                    animator.SetBool("IsActivated", true);
+                    animator.SetTrigger("Activate");
                 }
             }
         }
