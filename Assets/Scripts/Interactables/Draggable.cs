@@ -1,73 +1,80 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
+using Character;
 using UnityEngine;
 
-public class Draggable : MonoBehaviour
+namespace Interactables
 {
-    public bool isDragging = false;
-    private GameObject player;
-    private bool isColliding = false;
+    public class Draggable : MonoBehaviour
+    {
+        public bool isDragging;
+        private GameObject player;
+        private bool isColliding;
 
-    private Rigidbody rb;
-    public void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-        rb = GetComponent<Rigidbody>(); //rb equals the rigidbody on the player
-    }
+        private Rigidbody rb;
+        private PlayerState playerState;
+        private Collider[] colliders;
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.CompareTag("Player"))
+        public void Start()
         {
-            isColliding = true;
+            colliders = GetComponents<Collider>();
+            player = GameObject.FindGameObjectWithTag("Player");
+            playerState = player.GetComponent<PlayerState>();
+            rb = GetComponent<Rigidbody>(); //rb equals the rigidbody on the player
         }
-    }
-    
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.transform.CompareTag("Player"))
-        {
-            isColliding = false;
-        }
-    }
-    
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (isDragging)
+        public void OnTriggerEnter(Collider other)
         {
-            rb.useGravity = false;
-            transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 2, player.transform.position.z + 3);
-        }
-        else
-        {
-            rb.useGravity = true;
-        }
-        
-        if (isColliding)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (other.transform.CompareTag("Player"))
             {
-                if (isDragging)
+                isColliding = true;
+            }
+        }
+    
+        public void OnTriggerExit(Collider other)
+        {
+            if (other.transform.CompareTag("Player"))
+            {
+                isColliding = false;
+            }
+        }
+    
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (isDragging)
+            {
+                rb.useGravity = false;
+                var position = player.transform.position;
+                transform.position = new Vector3(position.x, position.y + 2, position.z + 3);
+            }
+            else
+            {
+                rb.useGravity = true;
+            }
+        
+            if (isColliding)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    isDragging = false;
-                    player.GetComponent<PlayerState>().inventoryItem = null;
-                    rb.angularVelocity = new Vector3(0f,0.0f,0f);
-                    rb.velocity = new Vector3(0f,0f,0f); 
-                    transform.rotation = Quaternion.Euler(new Vector3(0f,0f,0f));
-                    GetComponents<Collider>().Where(c => !c.isTrigger).ToList().ForEach(c => c.enabled = true);
-                }
-                else if (player.GetComponent<PlayerState>().inventoryItem == null)
-                {
-                    isDragging = true;
-                    player.GetComponent<PlayerState>().inventoryItem = gameObject;
-                    rb.angularVelocity = new Vector3(0f,2.0f,0f);
-                    rb.velocity = new Vector3(0f,0f,0f); 
-                    transform.rotation = Quaternion.Euler(new Vector3(0f,0f,0f));
-                    GetComponents<Collider>().Where(c => !c.isTrigger).ToList().ForEach(c => c.enabled = false);
+                    if (isDragging)
+                    {
+                        isDragging = false;
+                        playerState.inventoryItem = null;
+                        rb.angularVelocity = new Vector3(0f,0.0f,0f);
+                        rb.velocity = new Vector3(0f,0f,0f); 
+                        transform.rotation = Quaternion.Euler(new Vector3(0f,0f,0f));
+                        colliders.Where(c => !c.isTrigger).ToList().ForEach(c => c.enabled = true);
+                    }
+                    else if (playerState.inventoryItem == null)
+                    {
+                        isDragging = true;
+                        playerState.inventoryItem = gameObject;
+                        rb.angularVelocity = new Vector3(0f,2.0f,0f);
+                        rb.velocity = new Vector3(0f,0f,0f); 
+                        transform.rotation = Quaternion.Euler(new Vector3(0f,0f,0f));
+                        colliders.Where(c => !c.isTrigger).ToList().ForEach(c => c.enabled = false);
+                    }
                 }
             }
         }

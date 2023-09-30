@@ -1,26 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
+using Interactables;
 using UnityEngine;
 
-public class KeyController : MonoBehaviour
+namespace Character
 {
-    public int lightLayer = 6;
-    public int darkLayer = 3;
-    public int bothLayers = 7;
-
-    public void OnTriggerStay(Collider other)
+    public class KeyController : MonoBehaviour
     {
-        var isDragging = GetComponent<Draggable>().isDragging;
-        if (isDragging && other.transform.CompareTag("Door"))
-        {
-            var opennableComponent = other.gameObject.GetComponent<Opennable>();
-            var componentLayer = other.gameObject.transform.childCount > 1 ? bothLayers :
-                other.gameObject.transform.GetChild(0).gameObject.layer;
+        public int lightLayer = 6;
+        public int darkLayer = 3;
+        public int bothLayers = 7;
 
-            if (!opennableComponent.IsOpen() && opennableComponent.openByKey && gameObject.layer == componentLayer)
+        public void OnTriggerStay(Collider other)
+        {
+            var isDragging = GetComponent<Draggable>().isDragging;
+            if (isDragging && other.transform.CompareTag("Door"))
             {
-                opennableComponent.Open();
-                Destroy(gameObject);
+                GameObject o;
+                var opennableComponent = (o = other.gameObject).GetComponent<Opennable>();
+                var componentLayer = o.transform.childCount > 1 ? bothLayers :
+                    other.gameObject.transform.GetChild(0).gameObject.layer;
+
+                if (!opennableComponent.IsOpen() && opennableComponent.openByKey && gameObject.layer == componentLayer)
+                {
+                    opennableComponent.Open();
+                    Destroy(gameObject);
+                }
             }
         }
     }

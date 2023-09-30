@@ -2,8 +2,9 @@
 {
     public class ToDo 
     {
-        // TODO: Make a Universe prefab
-        // TODO: Make a Scene entity (maybe prefab)
+        // TODO: Fix/Add UI Manager
+        // TODO: refer to managers by using GetUniverse
+        // TODO: consolidate all constants (tags, Hints, etc.) to one location
         // TODO: Fix Player movement
         // TODO: Better Camera?
         // TODO: Better assets in general

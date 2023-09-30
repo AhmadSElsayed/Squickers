@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerState : MonoBehaviour
+namespace Character
 {
-    public GameObject inventoryItem;
-    public int coinCount = 0;
+    public class PlayerState : MonoBehaviour
+    {
+        public GameObject inventoryItem;
+        public int coinCount;
+    }
 }

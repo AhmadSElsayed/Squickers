@@ -1,27 +1,36 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CoinCollection : MonoBehaviour
+namespace Character
 {
-    private PlayerState playerState;
-    public Text ScoreUI;
-
-    private void Start()
+    public class CoinCollection : MonoBehaviour
     {
-        Debug.Log("started");
-        playerState = GetComponent<PlayerState>();
-        ScoreUI.text = "Coins: " + playerState.coinCount;
-    }
+        private PlayerState playerState;
+        public Text scoreUI;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Collided with: " + other.tag);
-        if (other.transform.CompareTag("Coin"))
+        private void Start()
         {
-            playerState.coinCount++;
-            ScoreUI.text = "Coins: " + playerState.coinCount;
-            Destroy(other.gameObject);
+            Debug.Log("started");
+            playerState = GetComponent<PlayerState>();
+            if (scoreUI != null)
+            {
+                scoreUI.text = "Coins: " + playerState.coinCount;
+            }
         }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            Debug.Log("Collided with: " + other.tag);
+            if (other.transform.CompareTag("Coin"))
+            {
+                playerState.coinCount++;
+                if (scoreUI != null)
+                {
+                    scoreUI.text = "Coins: " + playerState.coinCount;
+                }
+                Destroy(other.gameObject);
+            }
         
+        }
     }
 }

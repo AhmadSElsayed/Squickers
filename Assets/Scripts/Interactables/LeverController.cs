@@ -1,48 +1,53 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LeverController : MonoBehaviour
+namespace Interactables
 {
-    public bool doorOpen = false;
-    public GameObject door;
-    private Animator animator;
-    private bool isColliding = false;
+    public class LeverController : MonoBehaviour
+    {
+        public bool doorOpen;
+        public GameObject door;
+        private Animator animator;
+        private bool isColliding;
+        private string activateAnimString = "Activate";
+        private Opennable opennable;
+        private bool isanimatorNotNull;
 
-    public void Start()
-    {
-        animator = gameObject.transform.GetChild(0).GetComponent<Animator>();
-    }
-    
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.CompareTag("Player"))
+        public void Start()
         {
-            isColliding = true;
+            isanimatorNotNull = animator != null;
+            opennable = door.GetComponent<Opennable>();
+            animator = gameObject.transform.GetChild(0).GetComponent<Animator>();
         }
-    }
     
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.transform.CompareTag("Player"))
+        public void OnTriggerEnter(Collider other)
         {
-            isColliding = false;
-        }
-    }
-
-    public void Update()
-    {
-        if (isColliding)
-        {
-            if (Input.GetKeyDown(KeyCode.E) && doorOpen == false)
+            if (other.transform.CompareTag("Player"))
             {
-                doorOpen = true;
-                door.GetComponent<Opennable>().Open();
-                
-                if (animator != null)
+                isColliding = true;
+            }
+        }
+    
+        public void OnTriggerExit(Collider other)
+        {
+            if (other.transform.CompareTag("Player"))
+            {
+                isColliding = false;
+            }
+        }
+
+        public void Update()
+        {
+            if (isColliding)
+            {
+                if (Input.GetKeyDown(KeyCode.E) && doorOpen == false)
                 {
-                    animator.SetTrigger("Activate");
+                    doorOpen = true;
+                    opennable.Open();
+                
+                    if (isanimatorNotNull)
+                    {
+                        animator.SetTrigger(activateAnimString);
+                    }
                 }
             }
         }

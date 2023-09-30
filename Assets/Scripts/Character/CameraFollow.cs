@@ -1,17 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
+namespace Character
 {
-    [SerializeField] Vector3 offset;
-    [SerializeField] GameObject followObject;
-
-
-    // Update is called once per frame
-
-    private void FixedUpdate()
+    public class CameraFollow : MonoBehaviour
     {
-        transform.position = followObject.transform.position + offset;
+        [SerializeField] Vector3 offset;
+        [SerializeField] GameObject followObject;
+
+
+        // Update is called once per frame
+
+        private void FixedUpdate()
+        {
+            if (!followObject.IsDestroyed())
+            {
+                transform.position = followObject.transform.position + offset;
+            }
+        }
     }
 }

@@ -1,18 +1,17 @@
-﻿using Scene;
+using Scene;
 using UnityEngine;
 
-namespace Environment
+namespace Interactables
 {
-    public class KillerSea : MonoBehaviour
+    public class EndStar : MonoBehaviour
     {
-        public LevelManager levelManger;
-    
+        public LevelManager levelManager;
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
             {
                 Destroy(other.gameObject);
-                levelManger.LoseLevel();
+                levelManager.WinLevel();
             }
         }
     }

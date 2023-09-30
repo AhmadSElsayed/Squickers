@@ -1,49 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LayerSwitchable : MonoBehaviour
+namespace Interactables
 {
-    public int lightLayer = 6;
-    public int darkLayer = 3;
-    public int curLayer = 0;
-
-    private Rigidbody rigidBody;
-
-    public void Start()
+    public class LayerSwitchable : MonoBehaviour
     {
-        rigidBody = GetComponent<Rigidbody>();
-    }
+        private int lightLayer = 6;
+        private int darkLayer = 3;
+        private int curLayer;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
+        private Draggable draggable;
+
+        public void Start()
         {
-            if (GetComponent<Draggable>().isDragging)
-            {
-                curLayer = gameObject.layer;
+            draggable = GetComponent<Draggable>();
+        }
 
-                if (curLayer == lightLayer)
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (draggable.isDragging)
                 {
-                    UpdateLayer(gameObject, darkLayer);
-                }
-                else if (curLayer == darkLayer)
-                {
-                    UpdateLayer(gameObject, lightLayer);
+                    curLayer = gameObject.layer;
+
+                    if (curLayer == lightLayer)
+                    {
+                        UpdateLayer(gameObject, darkLayer);
+                    }
+                    else if (curLayer == darkLayer)
+                    {
+                        UpdateLayer(gameObject, lightLayer);
+                    }
                 }
             }
         }
-    }
 
-    public void UpdateLayer(GameObject o,int layer)
-    {
-        o.layer = layer;
-
-        for (int i = 0; i < o.transform.childCount; i++)
+        public void UpdateLayer(GameObject o,int layer)
         {
-            GameObject child = o.transform.GetChild(i).gameObject;
-            UpdateLayer(child, layer);
+            o.layer = layer;
+
+            for (int i = 0; i < o.transform.childCount; i++)
+            {
+                GameObject child = o.transform.GetChild(i).gameObject;
+                UpdateLayer(child, layer);
+            }
         }
     }
 }

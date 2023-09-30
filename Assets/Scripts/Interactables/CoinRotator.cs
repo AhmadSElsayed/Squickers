@@ -1,13 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CoinRotator : MonoBehaviour
+namespace Interactables
 {
-    public float speed = 2;
-    // Start is called before the first frame update
-    void Start()
+    public class CoinRotator : MonoBehaviour
     {
-        GetComponent<Rigidbody>().angularVelocity = new Vector3(0, speed, 0);
+        public float speed = 2;
+        // Start is called before the first frame update
+        void Start()
+        {
+            GetComponent<Rigidbody>().angularVelocity = new Vector3(0, speed, 0);
+        }
     }
 }

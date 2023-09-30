@@ -1,14 +1,17 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RinChat : MonoBehaviour
+namespace Scene
 {
-    // Update is called once per frame
-    void Update()
+    public class RinChat : MonoBehaviour
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        // Update is called once per frame
+        void Update()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
     }
 }

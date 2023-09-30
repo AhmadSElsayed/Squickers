@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5464260355717230660}
   - component: {fileID: 8468761774421327044}
-  - component: {fileID: 8347058087955252485}
   - component: {fileID: 4164906969738647294}
-  - component: {fileID: 2054609411332378137}
   - component: {fileID: 8350837762856239136}
+  - component: {fileID: 6593065348655212709}
   m_Layer: 0
   m_Name: Squickies
   m_TagString: Untagged
@@ -51,23 +50,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89c7eb3573a70804f808f4c6fad51d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundedPlayer: 0
   playerSpeed: 6
   jumpHeight: 2
   gravityValue: -20
---- !u!114 &8347058087955252485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 976895334071902201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 105b3833c6bee734297c7101670cf32c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ScoreUI: {fileID: 0}
 --- !u!114 &4164906969738647294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,18 +67,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryItem: {fileID: 0}
   coinCount: 0
---- !u!114 &2054609411332378137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 976895334071902201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24dbe195c9cfa65439a92e813a51a8be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!143 &8350837762856239136
 CharacterController:
   m_ObjectHideFlags: 0
@@ -120,6 +93,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &6593065348655212709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976895334071902201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105b3833c6bee734297c7101670cf32c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScoreUI: {fileID: 0}
 --- !u!1 &5397037450201491069
 GameObject:
   m_ObjectHideFlags: 0
